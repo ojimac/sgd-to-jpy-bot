@@ -26,7 +26,7 @@ Twitter.configure do |t|
 end
 
 doc = Nokogiri::HTML(open('http://info.finance.yahoo.co.jp/exchange/convert/?a=1&s=SGD&t=JPY'))
-doc.search('//td/strong').each do |tag|
+doc.search('td.noLine').each do |tag|
   Twitter.update("SGDJPY = #{tag.content}")
   break;
 end
